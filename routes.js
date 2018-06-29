@@ -15,7 +15,6 @@ exports.getVideo = function (req, res) {
 };
 
 exports.getDetail = function (req, res) {
-
     let URI = 'https://api.themoviedb.org/3/movie/' + req.body.movie_id + '?api_key=260cea00829ef56b79e1ed27c0113e3c&language=en-US';
     request.get(URI, function (error, response, body) {
         res.send(body);
@@ -28,3 +27,4 @@ exports.getReview = function (req, res) {
         res.send(body);
     });
 };
+
