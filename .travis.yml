@@ -7,9 +7,9 @@ branches:
     - master
 
 before_script:
-  - npm install -g firebase-tools
-  - npm install
-  - npm run test
+  - yarn global add firebase-tools
+  - yarn install
+  - yarn run test
 
 script :
 
