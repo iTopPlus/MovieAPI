@@ -1,8 +1,11 @@
 var app = require('express')();
 var request = require('request');
-
+const cors = require('cors');
+const bodyParser = require("body-parser");
 var port = process.env.PORT || 7777;
 
+app.use(cors());
+app.use(bodyParser.json());
 /* Routing */
 app.get('/', function (req, res) {
     res.send('<h1>Hello Node.js</h1>');
@@ -13,10 +16,10 @@ app.get('/index', function (req, res) {
 
 var routepage = require('./routes');
 
-app.get('/getPoppular', routepage.getPoppular); // get Poppular
-app.get('/getVideo', routepage.getVideo); // get Poppular
-app.get('/getDetail', routepage.getDetail); // get Poppular
-app.get('/getReview', routepage.getReview); // get Poppular
+app.post('/getPoppular', routepage.getPoppular); // get Poppular
+app.post('/getVideo', routepage.getVideo); // get Poppular
+app.post('/getDetail', routepage.getDetail); // get Poppular
+app.post('/getReview', routepage.getReview); // get Poppular
 
 
 
