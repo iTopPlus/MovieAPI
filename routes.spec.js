@@ -3,20 +3,22 @@ var expect    = require("chai").expect;
 var request = require('request');
 var MovieAPI = require('./routes');
 var moqGetPopular = require('./test/getPoppular.json');
+var moqGetVideo = require('./test/getVideo.json');
+var moqgetDetail = require('./test/getPoppular.json');
+var moqgetReview = require('./test/getReview.json'); 
 
 
-describe("Movie API", function () {
-    it("getPoppular should be same result with Moq",function(done){
-        request.get = (URL, CB) => {
-            CB(0,0,moqGetPopular);
+describe("Movie API getPopPular", function () {
+    request.get = (URL, CB) => {
+        CB(0,0,moqGetPopular);
+    }
+
+    var req = {
+        query : {
+            page : 1
         }
-
-        var req = {
-            query : {
-                page : 1
-            }
-        }
-        
+    }
+    it("should be same moq",function(done){
         var res = {
             send : (result)=> {
                 expect(result).to.equal(moqGetPopular);
@@ -25,36 +27,100 @@ describe("Movie API", function () {
         }
         MovieAPI.getPoppular(req,res)
     })
+    it("should not null",function(done){
+        var res = {
+            send : (result)=> {
+                expect(result).not.equal(null);
+                done();
+            }
+        }
+        MovieAPI.getPoppular(req,res)
+    })
 });
+describe("Movie API getVideo", function () {
+    request.get = (URL, CB) => {
+        CB(0,0,moqGetPopular);
+    }
 
-// exports.getPoppular = function (req, res) {
-//     let URI = 'https://api.themoviedb.org/3/movie/popular?api_key=260cea00829ef56b79e1ed27c0113e3c&language=en-US&page=' + req.query.page;
-//     request.get(URI, function (error, response, body) {
-//         res.send(body);
-//     });
-// };
+    var req = {
+        query : {
+            movie_id : 222
+        }
+    }
+    it("should be same moq",function(done){
+        var res = {
+            send : (result)=> {
+                expect(result).to.equal(moqGetPopular);
+                done();
+            }
+        }
+        MovieAPI.getVideo(req,res)
+    })
+    it("should not null",function(done){
+        var res = {
+            send : (result)=> {
+                expect(result).not.equal(null);
+                done();
+            }
+        }
+        MovieAPI.getVideo(req,res)
+    })
+});
+describe("Movie API getDetail", function () {
+    request.get = (URL, CB) => {
+        CB(0,0,moqGetPopular);
+    }
 
-// exports.getVideo = function (req, res) {
+    var req = {
+        query : {
+            movie_id : 1
+        }
+    }
+    it("should be same moq",function(done){
+        var res = {
+            send : (result)=> {
+                expect(result).to.equal(moqGetPopular);
+                done();
+            }
+        }
+        MovieAPI.getDetail(req,res)
+    })
+    it("should not null",function(done){
+        var res = {
+            send : (result)=> {
+                expect(result).not.equal(null);
+                done();
+            }
+        }
+        MovieAPI.getDetail(req,res)
+    })
+});
+describe("Movie API getReview", function () {
+    request.get = (URL, CB) => {
+        CB(0,0,moqGetPopular);
+    }
 
-//     let URI = 'https://api.themoviedb.org/3/movie/' + req.query.movie_id + '/videos?api_key=260cea00829ef56b79e1ed27c0113e3c&language=en-US';
-//     request.get(URI, function (error, response, body) {
-//         res.send(body);
-//     });
-// };
-
-// exports.getDetail = function (req, res) {
-
-//     let URI = 'https://api.themoviedb.org/3/movie/' + req.query.movie_id + '?api_key=260cea00829ef56b79e1ed27c0113e3c&language=en-US';
-//     request.get(URI, function (error, response, body) {
-//         res.send(body);
-//     });
-// };
-
-// exports.getReview = function (req, res) {
-
-//     console.log(req.query);
-//     let URI = 'https://api.themoviedb.org/3/movie/' + req.query.movie_id + '/reviews?api_key=260cea00829ef56b79e1ed27c0113e3c&language=en-US&page=1';
-//     request.get(URI, function (error, response, body) {
-//         res.send(body);
-//     });
-// };
+    var req = {
+        query : {
+            movie_id : 1
+        }
+    }
+    it("should be same moq",function(done){
+        var res = {
+            send : (result)=> {
+                expect(result).to.equal(moqGetPopular);
+                done();
+            }
+        }
+        MovieAPI.getReview(req,res)
+    })
+    it("should not null",function(done){
+        var res = {
+            send : (result)=> {
+                expect(result).not.equal(null);
+                done();
+            }
+        }
+        MovieAPI.getReview(req,res)
+    })
+});
