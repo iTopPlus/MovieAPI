@@ -1,0 +1,10 @@
+{
+    "name": "movieapi",
+    "version": "0.0.1",
+    "description": "Nodejs connect to api",
+    "main": "index.js",
+    "dependencies": {
+        "express": "^4.16.3",
+        "request": "^2.87.0"
+    }
+}
