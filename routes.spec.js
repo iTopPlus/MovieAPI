@@ -14,7 +14,7 @@ describe("Movie API getPopPular", function () {
     }
 
     var req = {
-        query : {
+        body : {
             page : 1
         }
     }
@@ -43,7 +43,7 @@ describe("Movie API getVideo", function () {
     }
 
     var req = {
-        query : {
+        body : {
             movie_id : 222
         }
     }
@@ -72,7 +72,7 @@ describe("Movie API getDetail", function () {
     }
 
     var req = {
-        query : {
+        body : {
             movie_id : 1
         }
     }
@@ -101,7 +101,7 @@ describe("Movie API getReview", function () {
     }
 
     var req = {
-        query : {
+        body : {
             movie_id : 1
         }
     }
