@@ -1,36 +1,33 @@
-const functions = require('firebase-functions');
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-var app = require('express')();
+const functions = require("firebase-functions")
+const app = require("express")
 var request = require('request');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-var port = process.env.PORT || 7777;
-
-app.use(cors());
-app.use(bodyParser.json());
-/* Routing */
-app.get('/', function (req, res) {
-    res.send('<h1>Hello Node.js</h1>');
-});
-app.get('/index', function (req, res) {
-    res.send('<h1>This is index page</h1>');
-});
 
 var routepage = require('./routes');
+
+
+
+const functions = require("firebase-functions")
+const express = require("express")
+
+/* Express */
+const app = express()
+app.use(cors());
+app.use(bodyParser.json());
 
 app.post('/getPoppular', routepage.getPoppular); // get Poppular
 app.post('/getVideo', routepage.getVideo); // get Poppular
 app.post('/getDetail', routepage.getDetail); // get Poppular
 app.post('/getReview', routepage.getReview); // get Poppular
 
-
-
-app.listen(port, function() {
-    console.log('Starting node.js on port ' + port);
+/* Routing */
+app.get('*', function (req, res) {
+    res.send('<h1>Hello Node.js</h1>');
 });
+
+const api_function = functions.https.onRequest(app)
+
+module.exports = {
+    api_function
+}

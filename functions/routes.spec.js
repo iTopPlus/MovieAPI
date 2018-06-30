@@ -2,10 +2,10 @@
 var expect    = require("chai").expect;
 var request = require('request');
 var MovieAPI = require('./routes');
-var moqGetPopular = require('./test/getPoppular.json');
-var moqGetVideo = require('./test/getVideo.json');
-var moqgetDetail = require('./test/getPoppular.json');
-var moqgetReview = require('./test/getReview.json'); 
+var moqGetPopular = require('./test_moq/getPoppular.json');
+var moqGetVideo = require('./test_moq/getVideo.json');
+var moqgetDetail = require('./test_moq/getPoppular.json');
+var moqgetReview = require('./test_moq/getReview.json'); 
 
 
 describe("Movie API getPopPular", function () {
