@@ -11,14 +11,10 @@ before_script:
   - cd functions
   - yarn install
   - yarn run test
-  - cd ..
-  - pwd
-  - ls
 
 script :
-
-after_success:
   - firebase deploy --token $FIREBASE_TOKEN --only functions
+after_success:  
 
 notifications:
   email :
