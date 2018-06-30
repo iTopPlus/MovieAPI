@@ -12,6 +12,8 @@ before_script:
   - yarn install
   - yarn run test
   - cd ..
+  - pwd
+  - ls
 
 script :
 
